@@ -1,0 +1,6 @@
+{
+  "name": "The Shield-17799",
+  "description": "An AI-powered investigative intelligence platform that detects online grooming and high-risk behavior before harm occurs, combining criminal investigation expertise with AI to support early intervention and child protection.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
