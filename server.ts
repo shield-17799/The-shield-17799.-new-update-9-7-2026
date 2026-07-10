@@ -66,7 +66,7 @@ Provide a highly structured, objective analysis following the specified schema. 
             },
             behavioralPhase: {
               type: Type.STRING,
-              description: "The current psychological grooming stage identified: e.g. 'Establishment of Connection', 'Trust-Building & Confidence', 'Isolation', 'Normalizing Sexual Discussion', 'Coercion/Scheduling', or 'None Detected'.",
+              description: "The current psychological grooming stage identified: e.g. 'Establishment of Connection', 'Trust-Building & Confidence', 'Isolation', 'Normalizing Sexual Discussion', 'C[...]
             },
             detectedTactics: {
               type: Type.ARRAY,
@@ -76,7 +76,7 @@ Provide a highly structured, objective analysis following the specified schema. 
                 properties: {
                   tacticName: {
                     type: Type.STRING,
-                    description: "Name of the grooming tactic, e.g., 'Isolation from parents', 'Secret-keeping requests', 'Flattery/Validation', 'Systematic boundary testing', 'Platform switching request'.",
+                    description: "Name of the grooming tactic, e.g., 'Isolation from parents', 'Secret-keeping requests', 'Flattery/Validation', 'Systematic boundary testing', 'Platform switching [...]
                   },
                   evidenceSnippet: {
                     type: Type.STRING,
@@ -126,9 +126,10 @@ Provide a highly structured, objective analysis following the specified schema. 
 
     const jsonResult = JSON.parse(resultText);
     res.json(jsonResult);
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     console.error("Error in /api/analyze-chat:", error);
-    res.status(500).json({ error: error?.message || "Internal server error occurred during analysis." });
+    res.status(500).json({ error: errorMessage || "Internal server error occurred during analysis." });
   }
 });
 
@@ -217,9 +218,10 @@ Deliver a structured analysis rating the threat level and outlining modus operan
 
     const jsonResult = JSON.parse(resultText);
     res.json(jsonResult);
-  } catch (error: any) {
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : String(error);
     console.error("Error in /api/profile-suspect:", error);
-    res.status(500).json({ error: error?.message || "Failed to generate suspect profile." });
+    res.status(500).json({ error: errorMessage || "Failed to generate suspect profile." });
   }
 });
 
