@@ -48,7 +48,7 @@ Evaluate the child's tone (validation-seeking, lonely, compliant, cautious).
 Provide a highly structured, objective analysis following the specified schema. Be rigorous, and do not make false accusations or overlook critical flags.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.0-flash",
       contents: `Please analyze the following conversation log:\n\n${chatText}`,
       config: {
         systemInstruction,
@@ -157,7 +157,7 @@ Identify whether this matches typical high-risk pedophilic, predatory, or cyber-
 Deliver a structured analysis rating the threat level and outlining modus operandi, warning flags, and containment strategies.`;
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-2.0-flash",
       contents: prompt,
       config: {
         systemInstruction,
